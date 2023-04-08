@@ -68,8 +68,8 @@ html {
   z-index: 55;
   top: 200px;
   left: 0px;
+  display: none;
   transition: 1s;
-  display: flex;
   animation: sliderRight 1s 1 alternate;
 }
 
@@ -763,9 +763,8 @@ input[type='radio']:checked {
    margin-top: 200px;
  }
 
- #dontSub {
-   width: 40%;
-   height: 40%;
+ #dontSubImg {
+   width: 90%;
  }
 
  #links1 {
@@ -786,7 +785,6 @@ input[type='radio']:checked {
 
  html {
    overflow-x: hidden;
-
  }
 
 
