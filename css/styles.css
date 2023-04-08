@@ -691,6 +691,12 @@ input[type='radio']:checked {
 }
 
 @media(max-width: 450px) and (min-width: 300px)  {
+
+  iframe {
+    width: 300px;
+    text-align: center;
+  }
+
   #containerBlocks {
   }
 
@@ -772,6 +778,15 @@ input[type='radio']:checked {
 
  #links3 {
    display: none;
+ }
+
+ #divider {
+   display: none;
+ }
+
+ html {
+   overflow-x: hidden;
+
  }
 
 
