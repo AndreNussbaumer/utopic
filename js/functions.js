@@ -44,6 +44,13 @@ buyBeer.addEventListener('click', () => {
   buyBeer.style.display = 'none'
 })
 
+function displaySub() {
+  dontSub.style.display = 'flex'
+}
+
+setTimeout(function(){
+  displaySub()
+},1000)
 
 const popupbutton = document.querySelector('.subscribe')
 const b = document.querySelector('.popup-container')
