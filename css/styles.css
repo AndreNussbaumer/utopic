@@ -71,6 +71,7 @@ html {
   display: none;
   transition: 1s;
   animation: sliderRight 1s 1 alternate;
+  cursor: pointer;
 }
 
 #container {
@@ -487,6 +488,12 @@ input[type='radio']:checked {
 
 #leadImage {
   margin-bottom: 40px;
+  animation: rotateAnimation 8s linear infinite;
+}
+
+@keyframes rotateAnimation {
+  from {transform: rotateY(0deg);}
+  to {transform: rotateY(360deg);}
 }
 
 #ReadMore {
