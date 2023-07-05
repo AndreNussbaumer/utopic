@@ -309,6 +309,24 @@ input[type='radio']:checked {
   animation: mover 1s infinite  alternate;
 }
 
+#aBlock:hover #circle  {
+  transition: 0.5s;
+  animation: rotateAnimation 8s linear infinite;
+}
+
+#aBlock:hover #circleEnt {
+  transition: 0.5s;
+  animation: rotateAnimation 8s linear infinite;
+}
+
+#aBlock:hover #circle1 {
+  transition: 0.5s;
+  animation: rotateAnimation 8s linear infinite;
+}
+
+
+
+
 @keyframes mover {
   0% { transform: translateY(0); }
   100% { transform: translateY(-10px); }
@@ -692,6 +710,8 @@ input[type='radio']:checked {
 .form-control-pop:focus {
   outline: #27ff6e 2px solid;
 }
+
+
 
 #center {
   display: none;
