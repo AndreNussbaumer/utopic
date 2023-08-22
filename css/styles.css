@@ -490,6 +490,11 @@ input[type='radio']:checked {
   font-weight: bold;
 }
 
+.articleBold {
+  font-size: 20pt;
+  font-weight: bold;
+}
+
 .leading {
   font-size: 32pt;
   font-weight:800;
@@ -767,7 +772,7 @@ input[type='radio']:checked {
    align-items: center;
    text-align: center;
    justify-content: center;
-   margin-top: 40px;
+   margin-top: 100px;
  }
 
  #logoMobile {
@@ -813,6 +818,11 @@ input[type='radio']:checked {
  html {
    overflow-x: hidden;
  }
+
+ body {
+   overflow: hidden;
+ }
+
 
 
 
