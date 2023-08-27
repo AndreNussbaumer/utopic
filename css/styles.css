@@ -51,7 +51,7 @@ html {
 }
 
 #homages {
-  
+
   width: 100%;
   height: auto;
   z-index: 0;
@@ -740,7 +740,6 @@ input[type='radio']:checked {
 
 #textFlash {
   color: white;
-  transition: 1s;
 }
 
 #flashNews {
@@ -867,13 +866,6 @@ input[type='radio']:checked {
    height: auto;
  }
 
-
-
- #divider {
-   padding-right: 200px;
-   line-height: 0px;
-   display: flex;
- }
 
 
 
