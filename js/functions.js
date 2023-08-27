@@ -68,6 +68,32 @@ closepopup.addEventListener('click', () => {
 })
 
 
+const flashMessages = [
+    {
+        message: 'As long as good men live, Socialism will never die.'
+    },
+    {
+        message: 'Profits are what comes from the difference between taking and giving.'
+    },
+    {
+        message: 'The easy path usually descends into darkness, while the hard path, usually ascends into light.'
+    },
+    {
+        message: 'Sex without love is the same as a beer without alcohol.'
+    },
+]
+
+function showMessages(){
+
+      let i = 0
+      // change it on interval
+      setInterval(function(){
+        let message = flashMessages[i++ % flashMessages.length]
+        $('#textFlash').text(message.message);
+      }, 6000);
+    }
+
+showMessages()
 
 
 // Third part of page

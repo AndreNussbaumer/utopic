@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href='css/styles.css'/>
         <link rel="icon" type="image/x-icon" href="images/favicon.png">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,400,600,300,800,700" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <title>Utopic</title>
     </head>
     <body>
@@ -323,6 +324,30 @@
       <div id="divider">
         <img src="images/divider.png"/>
       </div>
+      <div id="navSec">
+        <p id="homagesText">
+          HOMAGES
+        </p>
+      </div>
+      <div id="divider">
+        <img src="images/divider.png"/>
+      </div>
+      <div>
+        <a href="greta.html">
+        <canvas id="homages" width="1920" height="665" tabindex='2'></canvas>
+        </a>
+      </div>
+      <div id="divider">
+        <img src="images/divider.png"/>
+      </div>
+      <div id="flashNews">
+        <p id="textFlash">
+          As long as good men live, Socialism will never die.
+        </p>
+      </div>
+      <div id="divider">
+        <img src="images/divider.png"/>
+      </div>
       <div id="container">
         <div id="AOTM">
           <p id="affiliates" class="affiliates">
@@ -336,17 +361,23 @@
     </body>
     <script src="js/functions.js" type="text/javascript"></script>
     <script type="text/javascript">
+
     const canvas = document.getElementById("canvas")
     const ctx = canvas.getContext("2d")
+
+    const homages = document.getElementById("homages")
+    const ctxh = homages.getContext("2d")
 
     canvas.getBoundingClientRect()
 
     let timer = 50
+    let timer2 = 150
 
     let timerStart = 400
 
     let beerSwitch = true
     let switchOn = true
+    let switch2On = true
 
     // Mouse events
 
@@ -407,7 +438,35 @@
     const centerBoulder = new Image()
     centerBoulder.src = "images/progresstocap/centerboulder.png"
 
+    const gretaThunberg = new Image()
+    gretaThunberg.src = "images/gretathunberg.png"
+
+    const gretaBg = new Image()
+    gretaBg.src = "images/compgreta.png"
+
+    const gretaLettering = new Image()
+    gretaLettering.src = "images/gretalogo.png"
+
     const images = []
+
+    class HomageAssets {
+
+      constructor(x, y, img) {
+        this.x = x
+        this.y = y
+        this.img = img
+        images.push(this)
+      }
+
+      updatePosition() {
+
+      }
+
+      draw() {
+        ctxh.drawImage(this.img, this.x, this.y)
+      }
+
+    }
 
     class Assets {
 
@@ -428,6 +487,12 @@
 
     }
 
+    let GretaThunberg = new HomageAssets(880, 0, gretaThunberg)
+
+    let GretaBg = new HomageAssets(0, 0, gretaBg)
+
+    let GretaLettering = new HomageAssets(150, 220, gretaLettering)
+
     let BgBoulder = new Assets(50, 200, bgBoulder)
 
     let LeftBoulder = new Assets(0, 500, leftBoulder)
@@ -443,6 +508,7 @@
     let RightBoulder2 = new Assets(1650, 500, rightBoulder2)
 
     let CenterBoulder = new Assets(780, 240, centerBoulder)
+
 
     function floating() {
 
@@ -463,6 +529,38 @@
       }
 
     }
+
+    function gretaSize() {
+
+      if(switch2On){
+        GretaThunberg.x += 0.05
+        timer2--
+        if(timer2 <= 0){
+          switch2On = false
+        }
+      }
+
+      if(!switch2On){
+        GretaThunberg.x -= 0.05
+        timer2++
+        if(timer2 >= 150){
+          switch2On = true
+        }
+      }
+
+    }
+
+
+    function homageGretaDraw() {
+
+      GretaThunberg.draw()
+      GretaBg.draw()
+      GretaLettering.draw()
+      gretaSize()
+
+    }
+
+
 
     function movingAssets() {
 
@@ -559,7 +657,6 @@
         }
 
       }
-
     }
 
     function firstFeatured() {
@@ -711,7 +808,6 @@
 
     function mainLoop() {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-
       if(first.checked){
         firstFeatured()
       } else if(second.checked){
@@ -724,6 +820,15 @@
     }
 
     mainLoop()
+
+    function secondLoop() {
+      ctxh.clearRect(0, 0, homages.width, homages.height)
+      homageGretaDraw()
+      requestAnimationFrame(secondLoop)
+    }
+
+    secondLoop()
+
 
     </script>
 </html>
