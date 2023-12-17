@@ -76,6 +76,21 @@ html {
   animation: sliderLeft 1s 1 alternate;
 }
 
+#upButton {
+  position: fixed;
+  top: 750px;
+  right: 60px;
+  display: none;
+  transition: 1s;
+  z-index: 1;
+  opacity: 1;
+  cursor: pointer;
+}
+
+#upButton:hover {
+  transform: scale(1.1);
+}
+
 #dontSub {
   position: fixed;
   z-index: 55;
@@ -760,6 +775,41 @@ input[type='radio']:checked {
   height: auto;
 }
 
+#clareImage {
+  width: 30%;
+  height: 100%;
+}
+
+
+#gretaBanner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+#homaged {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#homagesLinkGreta {
+  cursor: pointer;
+}
+
+#homagesLinkGreta:hover {
+  font-weight: 800;
+}
+
+#homagesLinkClare {
+  cursor: pointer;
+
+}
+
+#homagesLinkClare:hover {
+  font-weight: 800;
+}
+
 @media(max-width: 450px) and (min-width: 300px)  {
 
   iframe {
@@ -871,5 +921,5 @@ input[type='radio']:checked {
 
 
 
-}
 
+}

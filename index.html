@@ -47,6 +47,11 @@
                 ARTICLES
               </a>
             </p>
+            <p id="links">
+              <a href="#homagesLinkClare">
+                HOMAGES
+              </a>
+            </p>
             <div id="subscribe">
               <div class="subscribe">
                   SUBSCRIBE
@@ -59,6 +64,10 @@
       </div>
       <div id="dontSub">
         <img id="dontSubImg" src="images/girlpopup.png"/>
+      </div>
+
+      <div id="upButton">
+        <img src="images/buttonup.png"/>
       </div>
 
       <div id="container">
@@ -332,10 +341,16 @@
       <div id="divider">
         <img src="images/divider.png"/>
       </div>
-      <div>
-        <a href="greta.html">
+      <div id="gretaBanner">
+        <a id="homagesLinkClare"><p id="homaged"> CLARE DALY </p></a>
+        <p id="homaged"> - </p>
+        <a id="homagesLinkGreta"><p id="homaged"> GRETA THUNBERG </p></a>
+      </div>
+      <div id="divider">
+        <img src="images/divider.png"/>
+      </div>
+      <div id="greta">
         <canvas id="homages" width="1920" height="665" tabindex='2'></canvas>
-        </a>
       </div>
       <div id="divider">
         <img src="images/divider.png"/>
@@ -447,6 +462,13 @@
     const gretaLettering = new Image()
     gretaLettering.src = "images/gretalogo.png"
 
+    const clareDaly = new Image()
+    clareDaly.src = "images/claredaly.png"
+
+    const clareLettering = new Image()
+    clareLettering.src = "images/clarelogo.png"
+
+
     const images = []
 
     class HomageAssets {
@@ -487,11 +509,22 @@
 
     }
 
+
+    // Greta Assets
+
     let GretaThunberg = new HomageAssets(880, 0, gretaThunberg)
 
     let GretaBg = new HomageAssets(0, 0, gretaBg)
 
     let GretaLettering = new HomageAssets(150, 220, gretaLettering)
+
+    // Clare Daly Assets
+
+    let ClareDaly = new HomageAssets(100, 50, clareDaly)
+
+    let ClareLettering = new HomageAssets(850, 250, clareLettering)
+
+    // Capitalism Assets
 
     let BgBoulder = new Assets(50, 200, bgBoulder)
 
@@ -547,16 +580,145 @@
           switch2On = true
         }
       }
-
     }
 
+    function clareSize() {
+
+      if(switch2On){
+        ClareDaly.x += 0.05
+        timer2--
+        if(timer2 <= 0){
+          switch2On = false
+        }
+      }
+
+      if(!switch2On){
+        ClareDaly.x -= 0.05
+        timer2++
+        if(timer2 >= 150){
+          switch2On = true
+        }
+      }
+    }
+
+    let gretaOn = false
+    let clareOn = true
 
     function homageGretaDraw() {
 
-      GretaThunberg.draw()
-      GretaBg.draw()
-      GretaLettering.draw()
-      gretaSize()
+      if(gretaOn){
+        GretaThunberg.draw()
+        GretaBg.draw()
+        GretaLettering.draw()
+        gretaSize()
+      }
+
+    }
+
+    homages.addEventListener('click', (e) => {
+      if(gretaOn){
+        window.location = 'greta.html'
+      } else if(clareOn){
+        window.location = 'clare.html'
+      }
+    })
+
+    const stars = []
+    const meteors = []
+
+    class Stars {
+
+        constructor(x, y){
+          this.x = x
+          this.y = y
+          this.size = 5
+          this.radius = 1
+        }
+
+        draw(){
+          ctxh.beginPath();
+          ctxh.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
+          ctxh.fillStyle = "white"
+          ctxh.fill()
+        }
+
+        drawMeteors(){
+          ctxh.beginPath();
+          ctxh.arc(this.x, this.y, this.size, 0, 2 * Math.PI)
+          ctxh.fillStyle = "blue"
+          ctxh.fill()
+        }
+
+        movement() {
+          this.y = this.y += 0.5
+          this.x = this.x -= randomInt(3)
+          this.size = this.size -= 0.1
+        }
+
+    }
+
+    function handleStars() {
+      for(let i = 0; i < 600 ; i++){
+        stars.push(new Stars(randomInt(1900), randomInt(1800)))
+      }
+    }
+
+    function drawStars() {
+      for(let i = 0; i < stars.length ; i++){
+        stars[i].draw()
+      }
+    }
+
+    handleStars()
+
+
+    function handleMeteors() {
+      for(let i = 0; i < 1 ; i++){
+        meteors.push(new Stars(randomInt(1900), randomInt(1800)))
+      }
+    }
+
+    function drawMeteors() {
+
+      for(let i = 0; i < meteors.length ; i++){
+
+        if(meteors[i].size <= 0){
+          meteors.splice(i, 1)
+          i--
+        } else {
+          meteors[i].drawMeteors()
+          meteors[i].movement()
+        }
+
+      }
+    }
+
+    function homageClareDraw() {
+
+      if(clareOn){
+        handleMeteors()
+        drawMeteors()
+        drawStars()
+        ClareDaly.draw()
+        ClareLettering.draw()
+        clareSize()
+
+
+      }
+    }
+
+
+
+
+    function changeHomage() {
+
+      if(clareOn && !gretaOn){
+        gretaOn = true
+        clareOn = false
+      } else {
+        clareOn = true
+        gretaOn = false
+      }
 
     }
 
@@ -686,6 +848,20 @@
     const readMore = document.getElementById('ReadMorebutton')
     const href = document.getElementById('href')
 
+    const gretaDisplay = document.getElementById('homagesLinkGreta')
+    const gretaDiv = document.getElementById('greta')
+
+    const clareDisplay = document.getElementById('homagesLinkClare')
+    const clareDiv = document.getElementById('clare')
+
+
+    gretaDisplay.addEventListener('click', (e) => {
+      changeHomage()
+    })
+
+    clareDisplay.addEventListener('click', (e) => {
+      changeHomage()
+    })
 
     let content = leadText.innerHTML
 
@@ -806,6 +982,40 @@
 
     stateCheck()
 
+    const buttonUp = document.getElementById('upButton')
+    const navi = document.getElementById('nav')
+
+    function upButton() {
+
+      posY = window.scrollY
+
+      if(posY > 200){
+        buttonUp.style.display = 'flex'
+      } else {
+        buttonUp.style.display = 'none'
+      }
+    }
+
+    buttonUp.addEventListener('click', (e) => {
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+        })
+    })
+
+    function showMessages(){
+
+          let i = 0
+          // change it on interval
+          setInterval(function(){
+            let message = flashMessages[i++ % flashMessages.length]
+            $('#textFlash').text(message.message);
+          }, 6000);
+        }
+
+    showMessages()
+
     function mainLoop() {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       if(first.checked){
@@ -824,6 +1034,8 @@
     function secondLoop() {
       ctxh.clearRect(0, 0, homages.width, homages.height)
       homageGretaDraw()
+      upButton()
+      homageClareDraw()
       requestAnimationFrame(secondLoop)
     }
 

@@ -1,6 +1,5 @@
 // POP UPS
 
-
 const buyBeer = document.getElementById('buyBeer')
 const dontSub = document.getElementById('dontSub')
 
@@ -81,19 +80,13 @@ const flashMessages = [
     {
         message: 'Sex without love is the same as a beer without alcohol.'
     },
+    {
+        message: "Nature can go on without men, but men can't go on without nature."
+    },
 ]
 
-function showMessages(){
 
-      let i = 0
-      // change it on interval
-      setInterval(function(){
-        let message = flashMessages[i++ % flashMessages.length]
-        $('#textFlash').text(message.message);
-      }, 6000);
-    }
 
-showMessages()
 
 
 // Third part of page
@@ -105,5 +98,3 @@ const fourthBlock = document.getElementById('fourthBlock')
 
 let imageBlocks = [firstBlock, secondBlock, thirdBlock, fourthBlock]
 */
-
-
