@@ -1,0 +1,43 @@
+#dreamJournal {
+  width: 100%;
+  height: 100%;
+}
+
+.dreams {
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  color: gold;
+  text-align: center;
+  cursor: pointer;
+}
+
+.dreams:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dreams:active {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.dreamText {
+  color: white;
+  text-align: center;
+  font-size: 12pt;
+  margin: 40px 50px 40px 50px;
+}
+
+
+#pistachios, #tadpoles, #sasquatch, #zipper, #terrace, #beach {
+  animation: slideaway 1s;
+  display: none;
+  transition: 1s;
+}
+
+@keyframes slideaway {
+  from { transform: translateY(-20px); opacity: 0}
+  to { transform: translateY(0px); opacity: 1}
+}

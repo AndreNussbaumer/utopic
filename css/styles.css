@@ -33,7 +33,10 @@ html {
   height: 10%;
 }
 
-#nav {
+header-nav {
+  display: flex;
+  color: white;
+  font-size: 12pt;
   height: 110px;
   top: 0;
   left: 0;
@@ -89,6 +92,11 @@ html {
 
 #upButton:hover {
   transform: scale(1.1);
+}
+
+#time {
+  color: white;
+  text-align: center;
 }
 
 #dontSub {
@@ -334,12 +342,27 @@ input[type='radio']:checked {
 
 #aBlock:hover {
   transition: 0.5s;
-  animation: mover 1s infinite  alternate;
+  transform: scale(1.05);
 }
 
-#aBlock:hover #circle  {
+#aBlock:hover #circle {
   transition: 0.5s;
   animation: rotateAnimation 8s linear infinite;
+}
+
+#aBlock:hover #subTextPhilosophical {
+  transition: 0.5s;
+  color: white;
+}
+
+#aBlock:hover #subText {
+  transition: 0.5s;
+  color: white;
+}
+
+#aBlock:hover #subTextReview {
+  transition: 0.5s;
+  color: white;
 }
 
 #aBlock:hover #circleEnt {
@@ -352,6 +375,35 @@ input[type='radio']:checked {
   animation: rotateAnimation 8s linear infinite;
 }
 
+#aBlock:hover #barPhilosophical {
+  z-index: -10;
+  margin-top: 0px;
+  width: 100%;
+  position: absolute;
+  transition: 0.5s;
+  height: 200px;
+  background: linear-gradient(90deg, rgba(174,10,255, 0.3) 0%, rgba(28,32,255, 0.3) 100%);
+}
+
+#aBlock:hover #bar {
+  z-index: -10;
+  margin-top: 0px;
+  width: 100%;
+  position: absolute;
+  transition: 0.5s;
+  height: 200px;
+  background: linear-gradient(90deg, rgba(0,229,255,0.3) 0%, rgba(55,255,96,0.3) 100%);
+}
+
+#aBlock:hover #barReview {
+  z-index: -10;
+  margin-top: 0px;
+  width: 100%;
+  position: absolute;
+  transition: 0.5s;
+  height: 200px;
+  background: linear-gradient(90deg, rgba(255,104,10,0.3) 0%, rgba(255,28,105,0.3) 100%);
+}
 
 
 
@@ -779,7 +831,6 @@ input[type='radio']:checked {
   width: 30%;
   height: 100%;
 }
-
 
 #gretaBanner {
   display: flex;

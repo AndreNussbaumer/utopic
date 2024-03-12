@@ -43,30 +43,6 @@ buyBeer.addEventListener('click', () => {
   buyBeer.style.display = 'none'
 })
 
-const popupbutton = document.querySelector('.subscribe')
-const b = document.querySelector('.popup-container')
-
-popupbutton.addEventListener('click', () => {
-    b.style.visibility = 'visible'
-})
-
-b.addEventListener('click', (e) => {
-  if(e.target.id !== ('content') && e.target.id !== ('poppy')) {
-    b.style.visibility = 'hidden'
-  }
-})
-
-const closepopup = document.querySelector('.popup-close')
-
-closepopup.addEventListener('click', () => {
-  if (b.style.visibility === 'visible') {
-    b.style.visibility = 'hidden'
-  } else {
-    b.style.visibility = 'visible'
-  }
-})
-
-
 const flashMessages = [
     {
         message: 'As long as good men live, Socialism will never die.'
@@ -84,6 +60,16 @@ const flashMessages = [
         message: "Nature can go on without men, but men can't go on without nature."
     },
 ]
+
+function readingTime() {
+
+  const text = document.getElementById("article").innerText;
+  const wpm = 200;
+  const words = text.trim().split(/\s+/).length;
+  const time = Math.ceil(words / wpm)
+  document.getElementById("time").innerText = 'This will take ' + time + ' minute(s) to read.'
+
+}
 
 
 
