@@ -25,8 +25,10 @@ function getLunarPhase() {
 
   const age = percent * lunarMonth
 
+  const newMoon = "NEW 🌑"
+
   if(age < 1.84566){
-    return " NEW 🌑"
+    return "NEW 🌑"
   } else if(age < 5.53699){
     return "WAXING CRESCENT 🌒"
   } else if(age < 9.22831){
@@ -43,4 +45,5 @@ function getLunarPhase() {
     return "WANING CRESCENT 🌘"
   }
 
+  return "NEW 🌑"
 }
